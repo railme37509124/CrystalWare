@@ -9938,11 +9938,19 @@ end)
     runFunction(function()
         local AnticheatDamageBypass = {Enabled = false}
         local AnticheatDamageBypassY = {Value = false}
+        local adbpart
         local AnticheatDamageBypassSpeed = {Value = 1.1}
         AnticheatDamageBypass = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
             Name = "DamageJump",
             Function = function(callback)
                 if callback then
+                    adbpart = Instance.new("Part")
+                    adbpart.Parent = workspace
+                    adbpart.Position = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y - 2, entityLibrary.character.HumanoidRootPart.CFrame.Z)
+                    adbpart.Transparency = 0.5
+                    adbpart.Anchored = true
+                    adbpart.CanCollide = true
+                    adbpart.Size = Vector3.new(10000, 1, 10000)
                     entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y - 7, entityLibrary.character.HumanoidRootPart.CFrame.Z)
                     task.wait(0.31)
                     entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y + 10, entityLibrary.character.HumanoidRootPart.CFrame.Z)
@@ -9955,6 +9963,10 @@ end)
                         task.wait(0.02)
                     end
                     AnticheatDamageBypass.ToggleButton(false)
+                else
+                    if adbpart then
+                        adbpart:Destroy()
+                    end
                 end
             end
         })
