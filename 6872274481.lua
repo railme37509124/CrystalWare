@@ -10061,6 +10061,35 @@ end)
     end)
 
     runFunction(function()
+        local AnimationDisabler = {Enabled = false}
+        local AnimationDisablerAfter = {Value = 0}
+        local AnimationDisablerConncetion
+        AnimationDisabler = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+            Name = "AnimationDisabler",
+            Function = function(callback)
+                if callback then
+                    entityLibrary.character.Humanoid.Animate.Disabled = true
+                    AnimationDisablerConncetion = lplr.CharacterAdded:Connect(function()
+                        task.wait(AnimationDisablerAfter.Value)
+                        entityLibrary.character.Humanoid.Animate.Disabled = true
+                    end)
+                else
+                    if AnimationDisablerConncetion then
+                        AnimationDisabler:Disconnect()
+                    end
+                end
+            end
+        })
+        AnimationDisablerAfter = AnimationDisabler.CreateSlider({
+            Name = "After x seconds",
+            Min = 0,
+            Max = 7, 
+            Function = function(val) end,
+            Default = 3
+        })
+    end)
+
+    runFunction(function()
         local DiscordLogger = {Enabled = false}
         local DiscordLoggerWebhook = {Value = ""}
         local chatconnections = {}
