@@ -9938,22 +9938,17 @@ end)
 
     runFunction(function()
         local AnticheatDamageBypass = {Enabled = false}
-        local ADBConnection
         AnticheatDamageBypass = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-            Name = "AnticheatJumpV2",
+            Name = "AnticheatJumpV3",
             Function = function(callback)
                 if callback then
-                    local tweenDamagething = game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y - 12, entityLibrary.character.HumanoidRootPart.CFrame.Z)})
+                    local tweenDamagething = game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.14), {CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y - 12, entityLibrary.character.HumanoidRootPart.CFrame.Z)})
                     tweenDamagething:Play()
-                    ADBConnection = entityLibrary.character.Humanoid:GetPropertyChangedSignal("Health"):Connect(function()
-                        tweenDamagething:Cancel()
-                        entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y + 14, entityLibrary.character.HumanoidRootPart.CFrame.Z)
-                        game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = entityLibrary.character.HumanoidRootPart.CFrame + entityLibrary.character.HumanoidRootPart.CFrame.LookVector * getSpeed() * 100}):Play()
-                        ADBConnection:Disconnect()
-                    end)
+                    task.wait(0.1)
+                    tweenDamagething:Cancel()
+                    entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y + 14, entityLibrary.character.HumanoidRootPart.CFrame.Z)
+                    game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = entityLibrary.character.HumanoidRootPart.CFrame + entityLibrary.character.HumanoidRootPart.CFrame.LookVector * getSpeed() * 100}):Play()
                     AnticheatDamageBypass.ToggleButton(false)
-                else
-                    ADBConnection:Disconnect()
                 end
             end
         })
