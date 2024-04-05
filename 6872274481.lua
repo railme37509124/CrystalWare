@@ -9939,8 +9939,8 @@ end)
     runFunction(function()
         local AnticheatDamageBypass = {Enabled = false}
         local ADBConnection
-        AnticheatDamageBypass = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
-            Name = "AnticheatDamageLongjump",
+        AnticheatDamageBypass = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
+            Name = "AnticheatJump",
             Function = function(callback)
                 if callback then
                     local tweenDamagething = game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y - 12, entityLibrary.character.HumanoidRootPart.CFrame.Z)})
@@ -9951,7 +9951,7 @@ end)
                         tweenDamagething:Cancel()
                         task.wait(0.1)
                         entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y + 14, entityLibrary.character.HumanoidRootPart.CFrame.Z)
-                        game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = entityLibrary.character.HumanoidRootPart.CFrame.LookVector * getSpeed() * 1.1}):Play()
+                        game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = entityLibrary.character.HumanoidRootPart.CFrame + entityLibrary.character.HumanoidRootPart.CFrame.LookVector * getSpeed() * 100}):Play()
                     end)
                     BypassLongjump.ToggleButton(false)
                 end
