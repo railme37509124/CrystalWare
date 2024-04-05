@@ -9985,6 +9985,58 @@ end)
             Default = 0
         })
     end)
+    
+    runFunction(function()
+        local DesperateJump = {Enabled = false}
+        local DesperateJumpY = {Value = false}
+        local adbpart
+        local DesperateJumpSpeed = {Value = 1.1}
+        DesperateJumpDamageBypass = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
+            Name = "DesperateJump",
+            Function = function(callback)
+                if callback then
+                    adbpart = Instance.new("Part")
+                    adbpart.Parent = workspace
+                    adbpart.Position = Vector3.new(entityLibrary.character.HumanoidRootPart.Position.X, entityLibrary.character.HumanoidRootPart.Position.Y - 2, entityLibrary.character.HumanoidRootPart.Position.Z)
+                    adbpart.Transparency = 0.5
+                    adbpart.Anchored = true
+                    adbpart.CanCollide = true
+                    adbpart.Size = Vector3.new(10000, 1, 10000)
+                    adbpart.Material = Enum.Material.Neon
+                    entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y - 7, entityLibrary.character.HumanoidRootPart.CFrame.Z)
+                    entityLibrary.character.HumanoidRootPart.Anchored = true
+                    warningNotification("DesperateJump", "Waiting 0.6s to jump", 2)
+                    task.wait(0.6)
+                    entityLibrary.character.HumanoidRootPart.Anchored = false
+                    entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y + 10, entityLibrary.character.HumanoidRootPart.CFrame.Z)
+                    task.wait(0.02)
+                    for i = 1, 13 do
+                        entityLibrary.character.HumanoidRootPart.CFrame = entityLibrary.character.HumanoidRootPart.CFrame + Vector3.new(0, DesperateJumpY.Value / 10, 0) + (entityLibrary.character.HumanoidRootPart.CFrame.LookVector * DesperateJumpSpeed.Value / 10)
+                        task.wait(0.015)
+                    end
+                    DesperateJump.ToggleButton(false)
+                else
+                    if adbpart then
+                        adbpart:Destroy()
+                    end
+                end
+            end
+        })
+        DesperateJumpY = DesperateJump.CreateSlider({
+            Name = "Up",
+            Min = 0,
+            Max = 50, 
+            Function = function(val) end,
+            Default = 0
+        })
+        DesperateJumpSpeed = DesperateJump.CreateSlider({
+            Name = "Speed",
+            Min = 1,
+            Max = 50, 
+            Function = function(val) end,
+            Default = 0
+        })
+    end)
 
     runFunction(function()
         local ConfettiExploit = {Enabled = false}
