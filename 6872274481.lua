@@ -239,7 +239,6 @@ end
 
 local entityLibrary = shared.vapeentity
 local WhitelistFunctions = shared.vapewhitelist
-WhitelistFunctions.LocalPriority = 1
 local RunLoops = {RenderStepTable = {}, StepTable = {}, HeartTable = {}}
 do
     function RunLoops:BindToRenderStep(name, func)
@@ -11976,5 +11975,3 @@ task.spawn(function()
         AutoLeave.ToggleButton(false)
     end
 end)
-
-WhitelistFunctions.LocalPriority = 1
