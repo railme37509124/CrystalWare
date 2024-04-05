@@ -9943,13 +9943,14 @@ end)
             Name = "BypassLongjump",
             Function = function(callback)
                 if callback then
-                    entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y - 12, entityLibrary.character.HumanoidRootPart.CFrame.Z)
-                    ADBConnection = lplr:GetPropertyChangedSignal("Health"):Connect(function()
+                    game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y - 12, entityLibrary.character.HumanoidRootPart.CFrame.Z)}):Play()
+                    ADBConnection = lplr.Humanoid:GetPropertyChangedSignal("Health"):Connect(function()
                         ADBConnection:Disconnect()
                         task.wait(0.1)
                         entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y + 14, entityLibrary.character.HumanoidRootPart.CFrame.Z)
                         game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = entityLibrary.character.HumanoidRootPart.CFrame.LookVector * getSpeed() * 1.1}):Play()
                     end)
+                    BypassLongjump.ToggleButton(false)
                 end
             end
         })
