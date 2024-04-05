@@ -9938,10 +9938,10 @@ end)
     runFunction(function()
         local AnticheatDamageBypass = {Enabled = false}
         AnticheatDamageBypass = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-            Name = "AnticheatJumpV4",
+            Name = "AnticheatJump",
             Function = function(callback)
                 if callback then
-                    game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = entityLibrary.character.HumanoidRootPart.CFrame + ((entityLibrary.character.HumanoidRootPart.CFrame.LookVector * 25) * getSpeed())}):Play()
+                    game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.19), {CFrame = entityLibrary.character.HumanoidRootPart.CFrame + (entityLibrary.character.HumanoidRootPart.CFrame.LookVector * 25)}):Play()
                     AnticheatDamageBypass.ToggleButton(false)
                 end
             end
