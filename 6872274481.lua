@@ -9938,7 +9938,7 @@ end)
     runFunction(function()
         local AnticheatDamageBypass = {Enabled = false}
         AnticheatDamageBypass = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-            Name = "FunnyJump",
+            Name = "DamageJump",
             Function = function(callback)
                 if callback then
                     entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y - 7, entityLibrary.character.HumanoidRootPart.CFrame.Z)
@@ -9946,7 +9946,7 @@ end)
                     entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y + 10, entityLibrary.character.HumanoidRootPart.CFrame.Z)
                     task.wait(0.02)
                     for i = 1, 25 do
-                        entityLibrary.character.HumanoidRootPart.CFrame = entityLibrary.character.HumanoidRootPart.CFrame + (entityLibrary.character.HumanoidRootPart.CFrame.LookVector * 1.1)
+                        entityLibrary.character.HumanoidRootPart.CFrame = entityLibrary.character.HumanoidRootPart.CFrame + CFrame.new(0, 3.5, 0)(entityLibrary.character.HumanoidRootPart.CFrame.LookVector * 1.1)
                         task.wait(0.01)
                     end
                     AnticheatDamageBypass.ToggleButton(false)
