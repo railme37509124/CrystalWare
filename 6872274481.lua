@@ -10075,7 +10075,7 @@ end)
                     end)
                 else
                     if AnimationDisablerConncetion then
-                        AnimationDisabler:Disconnect()
+                        AnimationDisablerConncetion:Disconnect()
                     end
                     entityLibrary.character.Animate.Disabled = false
                 end
