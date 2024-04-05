@@ -9945,7 +9945,7 @@ end)
                 if callback then
                     local tweenDamagething = game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y - 12, entityLibrary.character.HumanoidRootPart.CFrame.Z)})
                     tweenDamagething:Play()
-                    ADBConnection = lplr.Humanoid:GetPropertyChangedSignal("Health"):Connect(function()
+                    ADBConnection = entityLibrary.character.Humanoid:GetPropertyChangedSignal("Health"):Connect(function()
 
                         ADBConnection:Disconnect()
                         tweenDamagething:Cancel()
