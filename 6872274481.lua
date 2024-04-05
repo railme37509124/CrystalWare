@@ -9946,7 +9946,7 @@ end)
                     entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y + 10, entityLibrary.character.HumanoidRootPart.CFrame.Z)
                     task.wait(0.02)
                     for i = 1, 25 do
-                        entityLibrary.character.HumanoidRootPart.CFrame = entityLibrary.character.HumanoidRootPart.CFrame + (entityLibrary.character.HumanoidRootPart.CFrame.LookVector * 2)
+                        entityLibrary.character.HumanoidRootPart.CFrame = entityLibrary.character.HumanoidRootPart.CFrame + (entityLibrary.character.HumanoidRootPart.CFrame.LookVector * 1.1)
                         task.wait(0.01)
                     end
                     AnticheatDamageBypass.ToggleButton(false)
