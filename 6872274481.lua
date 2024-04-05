@@ -9951,8 +9951,11 @@ end)
                     adbpart.Anchored = true
                     adbpart.CanCollide = true
                     adbpart.Size = Vector3.new(10000, 1, 10000)
+                    adbpart.Material = Enum.Material.Neon
                     entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y - 7, entityLibrary.character.HumanoidRootPart.CFrame.Z)
+                    entityLibrary.character.HumanoidRootPart.Anchored = true
                     task.wait(0.31)
+                    entityLibrary.character.HumanoidRootPart.Anchored = false
                     entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y + 10, entityLibrary.character.HumanoidRootPart.CFrame.Z)
                     task.wait(0.02)
                     for i = 1, 25 do
