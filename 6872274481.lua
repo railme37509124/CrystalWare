@@ -10068,15 +10068,16 @@ end)
             Name = "AnimationDisabler",
             Function = function(callback)
                 if callback then
-                    entityLibrary.character.Humanoid.Animate.Disabled = true
+                    entityLibrary.character.Animate.Disabled = true
                     AnimationDisablerConncetion = lplr.CharacterAdded:Connect(function()
                         task.wait(AnimationDisablerAfter.Value)
-                        entityLibrary.character.Humanoid.Animate.Disabled = true
+                        entityLibrary.character.Animate.Disabled = true
                     end)
                 else
                     if AnimationDisablerConncetion then
                         AnimationDisabler:Disconnect()
                     end
+                    entityLibrary.character.Animate.Disabled = false
                 end
             end
         })
