@@ -10602,7 +10602,7 @@ end)
             end,
             Default = 0
         })
-        if string.lower(identifyexecutor()):find("arceus") warningNotification("FUCK THIS", "HOLY SHIT ARCEUS X IS SO DOG SHIT", 5) end
+        if string.lower(identifyexecutor()):find("arceus") then warningNotification("FUCK THIS", "HOLY SHIT ARCEUS X IS SO DOG SHIT", 5) end
     end)
 
     runFunction(function()
