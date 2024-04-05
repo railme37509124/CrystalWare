@@ -10066,7 +10066,7 @@ end)
         local chatconnections = {}
         local playerConnections = {}
         local httpRequest = syn and syn.request or http.request
-        ConfettiExploit = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+        DiscordLogger = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
             Name = "WebhookChat",
             Function = function(callback)
                 if callback then
@@ -10165,7 +10165,7 @@ end)
             Name = "Webhook",
             TempText = "Webhook URL",
             FocusLost = function(enter) 
-                warningNotification("Webhook Chat Logger", "Changed webhook")
+                warningNotification("Webhook Chat Logger", "Changed webhook", 3)
             end
         })
     end)
