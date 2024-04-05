@@ -9948,8 +9948,7 @@ end)
                         ADBConnection:Disconnect()
                         task.wait(0.1)
                         entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y + 14, entityLibrary.character.HumanoidRootPart.CFrame.Z)
-                        --entityLibrary.character.HumanoidRootPart.CFrame = entityLibrary.character.HumanoidRootPart.CFrame.LookVector * getSpeed() * 1.1
-                        tweenService:Create(entityLibrary.character.HumanoidRootPart, tweenInfo.new(0.25), {CFrame = entityLibrary.character.HumanoidRootPart.CFrame.LookVector * getSpeed() * 1.1}):Play()
+                        game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = entityLibrary.character.HumanoidRootPart.CFrame.LookVector * getSpeed() * 1.1}):Play()
                     end)
                 end
             end
@@ -10074,30 +10073,31 @@ end)
         })
     end)
     runFunction(function()
+        local InfiniteJump = {Enabled = false}
+        local IJConnection
         InfiniteJump = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
             Name = "InfiniteJump",
             Function = function(callback)
                 if callback then
-    
+                   IJConnection = game:GetService("UserInputService").JumpRequest:Connect(function()
+                        entityLibrary.character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+                   end)
+                else
+                    IJConnection:Disconnect()
                 end
             end
         })
-        game:GetService("UserInputService").JumpRequest:Connect(function()
-            if not InfiniteJump.Enabled then return end
-            local localPlayer = game:GetService("Players").LocalPlayer
-            local character = localPlayer.Character
-            if character and character:FindFirstChildOfClass("Humanoid") then
-                local humanoid = character:FindFirstChildOfClass("Humanoid")
-                humanoid:ChangeState("Jumping")
-            end
-        end)         
+     
     end)
     runFunction(function()
+        local FPSUnlocker = {Enabled = false}
         FPSUnlocker = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
             Name = "FPSUnlocker",
             Function = function(callback)
                 if callback then
                     setfpscap(2001)
+                else
+                    setfpscap(60)
                 end
             end
         })
@@ -10127,7 +10127,7 @@ end)
                     for i, v in pairs(game:GetService("Players"):GetChildren()) do
                         v.Chatted:Connect(function(msg)
                             for _, word in ipairs(words) do
-                                if string.find(string.lower(msg), string.lower(word)) and not skidDetected[v.Name] then
+                                if string.find(string.lower(msg), string.lower(word)) and not skidDetected[v.Name] and not string.find(string.lower(msg), string.lower("CrystalWare")) then
                                     skidDetected[v.Name] = true
                                     warningNotification("Skid Detector", v.Name.." is a likely skid!", 100) 
                                     break
