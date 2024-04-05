@@ -10061,6 +10061,116 @@ end)
     end)
 
     runFunction(function()
+        local DiscordLogger = {Enabled = false}
+        local DiscordLoggerWebhook = {Value = ""}
+        local chatconnections = {}
+        local playerConnections = {}
+        local httpRequest = syn and syn.request or http.request
+        ConfettiExploit = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+            Name = "WebhookChat",
+            Function = function(callback)
+                if callback then
+                    game:GetService("Players").PlayerAdded:Connect(function(plr)
+                        playerConnections[plr.Name] = v.Chatted:Connect(function(msg)
+                            local data = {
+                                ["embeds"] = {{
+                                    ["author"] = {
+                                        ["name"] = "Player chatted in your match",
+                                        ["icon_url"] = "https://c.tenor.com/xhKPBAWD-aEAAAAC/tenor.gif"
+                                    },
+                                    ["description"] = "",
+                                    ["color"] = tonumber(0xFFFAFA),
+                                    ["fields"] = {
+                                        {
+                                            ["name"] = "Username",
+                                            ["value"] = plr.Name,
+                                            ["inline"] = false
+                                        },
+                                        {
+                                            ["name"] = "Message",
+                                            ["value"] = msg,
+                                            ["inline"] = false
+                                        },
+                                        {
+                                            ["name"] = "Time",
+                                            ["value"] = "<t:"..tostring(os.time())..">",
+                                            ["inline"] = false
+                                        },
+                                    },
+                                }},
+                            }
+                            httpRequest(
+                                {
+                                    Url = DiscordLoggerWebhook.Value,
+                                    Method = "POST",
+                                    Headers = {
+                                        ["Content-Type"] = "application/json"
+                                    },
+                                    Body = game:GetService("HttpService"):JSONEncode(data)
+                                }
+                            )
+                        end)
+                    end)
+
+                    for i, v in pairs(game:GetService("Players"):GetChildren()) do
+                        chatconnections[v.Name] = v.Chatted:Connect(function(msg)
+                            local data = {
+                                ["embeds"] = {{
+                                    ["author"] = {
+                                        ["name"] = "Player chatted in your match",
+                                        ["icon_url"] = "https://c.tenor.com/xhKPBAWD-aEAAAAC/tenor.gif"
+                                    },
+                                    ["description"] = "",
+                                    ["color"] = tonumber(0xFFFAFA),
+                                    ["fields"] = {
+                                        {
+                                            ["name"] = "Username",
+                                            ["value"] = v.Name,
+                                            ["inline"] = false
+                                        },
+                                        {
+                                            ["name"] = "Message",
+                                            ["value"] = msg,
+                                            ["inline"] = false
+                                        },
+                                        {
+                                            ["name"] = "Time",
+                                            ["value"] = "<t:"..tostring(os.time())..">",
+                                            ["inline"] = false
+                                        },
+                                    },
+                                }},
+                            }
+                            httpRequest(
+                                {
+                                    Url = DiscordLoggerWebhook.Value,
+                                    Method = "POST",
+                                    Headers = {
+                                        ["Content-Type"] = "application/json"
+                                    },
+                                    Body = game:GetService("HttpService"):JSONEncode(data)
+                                }
+                            )
+                        end)
+                    end
+                else
+                    for _, v in chatconnections do
+                        v:Disconnect()
+                        v = nil
+                    end
+                end
+            end
+        })
+        DiscordLoggerWebhook = DiscordLogger.CreateTextBox({
+            Name = "Webhook",
+            TempText = "Webhook URL",
+            FocusLost = function(enter) 
+                warningNotification("Webhook Chat Logger", "Changed webhook")
+            end
+        })
+    end)
+
+    runFunction(function()
         local hasTeleported = false
         local TweenService = game:GetService("TweenService")
     
