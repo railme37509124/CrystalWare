@@ -9937,6 +9937,8 @@ end)
 
     runFunction(function()
         local AnticheatDamageBypass = {Enabled = false}
+        local AnticheatDamageBypassY = {Value = false}
+        local AnticheatDamageBypassSpeed = {Value = 1.1}
         AnticheatDamageBypass = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
             Name = "DamageJump",
             Function = function(callback)
@@ -9949,12 +9951,26 @@ end)
                         --yes
                         --yes
                         print("hi")
-                        entityLibrary.character.HumanoidRootPart.CFrame = entityLibrary.character.HumanoidRootPart.CFrame + Vector3.new(0, 0.2, 0) + (entityLibrary.character.HumanoidRootPart.CFrame.LookVector * 1.1)
+                        entityLibrary.character.HumanoidRootPart.CFrame = entityLibrary.character.HumanoidRootPart.CFrame + Vector3.new(0, AnticheatDamageBypassY.Value / 10, 0) + (entityLibrary.character.HumanoidRootPart.CFrame.LookVector * AnticheatDamageBypassSpeed.Value / 10)
                         task.wait(0.02)
                     end
                     AnticheatDamageBypass.ToggleButton(false)
                 end
             end
+        })
+        AnticheatDamageBypassY = AnticheatDamageBypass.CreateSlider({
+            Name = "Up",
+            Min = 0,
+            Max = 50, 
+            Function = function(val) end,
+            Default = 0
+        })
+        AnticheatDamageBypassSpeed = AnticheatDamageBypass.CreateSlider({
+            Name = "Speed",
+            Min = 1,
+            Max = 50, 
+            Function = function(val) end,
+            Default = 0
         })
     end)
 
