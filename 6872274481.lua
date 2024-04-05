@@ -9940,7 +9940,7 @@ end)
         local AnticheatDamageBypass = {Enabled = false}
         local ADBConnection
         AnticheatDamageBypass = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
-            Name = "BypassLongjump",
+            Name = "AnticheatDamageLongjump",
             Function = function(callback)
                 if callback then
                     local tweenDamagething = game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y - 12, entityLibrary.character.HumanoidRootPart.CFrame.Z)})
