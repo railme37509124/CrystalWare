@@ -9991,7 +9991,7 @@ end)
         local DesperateJumpY = {Value = false}
         local adbpart
         local DesperateJumpSpeed = {Value = 1.1}
-        DesperateJumpDamageBypass = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
+        DesperateJump = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
             Name = "DesperateJump",
             Function = function(callback)
                 if callback then
