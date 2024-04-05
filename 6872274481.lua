@@ -9941,7 +9941,8 @@ end)
             Name = "AnticheatJumpV4",
             Function = function(callback)
                 if callback then
-                    game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame +( game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.LookVector * 25) * getSpeed()}):Play()
+                    game:GetService("TweenService"):Create(entityLibrary.character.HumanoidRootPart, TweenInfo.new(0.25), {CFrame = entityLibrary.character.HumanoidRootPart.CFrame + ((entityLibrary.character.HumanoidRootPart.CFrame.LookVector * 25) * getSpeed())}):Play()
+                    AnticheatDamageBypass.ToggleButton(false)
                 end
             end
         })
