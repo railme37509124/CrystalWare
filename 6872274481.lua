@@ -10158,6 +10158,10 @@ end)
                         v:Disconnect()
                         v = nil
                     end
+                    for _, v in playerConnections do
+                        v:Disconnect()
+                        v = nil
+                    end
                 end
             end
         })
