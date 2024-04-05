@@ -9946,6 +9946,9 @@ end)
                     entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y + 10, entityLibrary.character.HumanoidRootPart.CFrame.Z)
                     task.wait(0.02)
                     for i = 1, 25 do
+                        --yes
+                        --yes
+                        print("hi")
                         entityLibrary.character.HumanoidRootPart.CFrame = entityLibrary.character.HumanoidRootPart.CFrame + Vector3.new(0, 3.5, 0) + (entityLibrary.character.HumanoidRootPart.CFrame.LookVector * 1.1)
                         task.wait(0.01)
                     end
