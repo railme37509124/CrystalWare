@@ -10065,7 +10065,7 @@ end)
         local DiscordLoggerWebhook = {Value = ""}
         local chatconnections = {}
         local playerConnections = {}
-        local httpRequest = syn and syn.request or http.request
+        local httpRequest = syn.request
         DiscordLogger = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
             Name = "WebhookChat",
             Function = function(callback)
