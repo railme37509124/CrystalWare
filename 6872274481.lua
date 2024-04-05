@@ -9946,7 +9946,7 @@ end)
                 if callback then
                     adbpart = Instance.new("Part")
                     adbpart.Parent = workspace
-                    adbpart.Position = CFrame.new(entityLibrary.character.HumanoidRootPart.CFrame.X, entityLibrary.character.HumanoidRootPart.CFrame.Y - 2, entityLibrary.character.HumanoidRootPart.CFrame.Z)
+                    adbpart.Position = Vector3.new(entityLibrary.character.HumanoidRootPart.Position.X, entityLibrary.character.HumanoidRootPart.Position.Y - 2, entityLibrary.character.HumanoidRootPart.Position.Z)
                     adbpart.Transparency = 0.5
                     adbpart.Anchored = true
                     adbpart.CanCollide = true
