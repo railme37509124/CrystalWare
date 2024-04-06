@@ -10082,6 +10082,20 @@ end)
     end)
 
     runFunction(function()
+        local PlayerAnticheatTP = {Enabled = false}
+        PlayerAnticheatTP = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+            Name = "PlayerAnticheatTP",
+            Function = function(callback)
+                if callback then
+                    task.spawn(function()
+                        entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(game.Players[math.random(1, #game.Players:GetPlayers())].Character.HumanoidRootPart.Position)
+                    end)
+                end
+            end
+        })
+    end)
+
+    runFunction(function()
         local AnimationDisabler = {Enabled = false}
         local AnimationDisablerAfter = {Value = 0}
         local AnimationDisablerConncetion
