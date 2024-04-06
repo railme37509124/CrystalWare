@@ -10168,12 +10168,6 @@ end)
         local TPAuraTarget = nil
         local yesConnection
         local TPAuraInt = {Value = 3}
-        local oldRoot
-        local clone2
-        local tpauracon
-        local tpauracon2
-
-
         --[[local TPAuraRange = {Value = 0}
         local TPAuraStay = {Value = 0}--]]
         TPAura = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
@@ -10181,77 +10175,25 @@ end)
             Function = function(callback)
                 if callback then
                     task.spawn(function()
-                        local oldRoot = entityLibrary.character.HumanoidRootPart
-                        local clone = oldRoot:Clone()
-                        
-                        lplr.Character.Parent = game
-                        clone2 = oldRoot:Clone()
-                        clone2.Parent = lplr.Character
-                        oldRoot.Parent = game.Workspace.CurrentCamera
-                        clone2.CFrame = oldRoot.CFrame
-                        lplr.Character.PrimaryPart = clone2
-                        lplr.Character.Parent = workspace
-                        oldRoot.Transparency = .5
-                        clone2.Transparency = 1
-                        oldRoot.CanCollide = true
-                        clone2.Color = Color3.fromRGB(0,0,0)
-                        oldRoot.Color = Color3.fromRGB(255, 255, 255)
-                        clone2.CanCollide = true
-                        oldRoot.Anchored = false
-                        --a
-                        --a
-                        --a
-                        tpauracon = lplr.CharacterAdded:Connect(function()
-                            task.wait(0.3)
-                            local oldRoot = entityLibrary.character.HumanoidRootPart
-                            local clone = oldRoot:Clone()
-                            
-                            lplr.Character.Parent = game
-                            clone2 = oldRoot:Clone()
-                            clone2.Parent = lplr.Character
-                            oldRoot.Parent = game.Workspace.CurrentCamera
-                            clone2.CFrame = oldRoot.CFrame
-                            lplr.Character.PrimaryPart = clone2
-                            lplr.Character.Parent = workspace
-                            oldRoot.Transparency = .5
-                            clone2.Transparency = 1
-                            oldRoot.CanCollide = true
-                            clone2.Color = Color3.fromRGB(0,0,0)
-                            oldRoot.Color = Color3.fromRGB(255, 255, 255)
-                            clone2.CanCollide = true
-                            oldRoot.Anchored = false
-                        end)
-                        task.spawn(function()
-                            repeat task.wait()
-                                if not isAuring then
-                                    clone2.CFrame = oldRoot.CFrame
-                                end
-                            until (not TPAura.Enabled)
-                        end)
                         repeat task.wait(TPAuraInt.Value)
                             pcall(function()
                                 if TPAuraTarget == nil then TPAuraTarget = EntityNearMouse(10000) end
                                 if TPAuraTarget then
-                                    isAuring = true
                                     yesConnection = TPAuraTarget.Character.Humanoid.Died:Connect(function()
                                         TPAuraTarget = nil
                                         repeat task.wait() TPAuraTarget = EntityNearMouse(10000) until (TPAuraTarget)
                                     end)
-                                    local oldposition = oldRoot.CFrame
-                                    clone2.CFrame = TPAuraTarget.Character.HumanoidRootPart.CFrame
+                                    local oldposition = entityLibrary.character.HumanoidRootPart.CFrame
+                                    entityLibrary.character.HumanoidRootPart.CFrame = TPAuraTarget.Character.HumanoidRootPart.CFrame
                                     task.wait(0.2)
-                                    clone2.CFrame = oldposition
-                                    isAuring = false
+                                    entityLibrary.character.HumanoidRootPart.CFrame = oldposition
                                 end
                             end)
                         until (not TPAura.Enabled)
                     end)
-
                 else
                     TPAuraTarget = nil
                     yesConnection:Disconnect()
-                    tpauracon:Disconnect()
-                    tpauracon2:Disconnect()
                 end
             end
         })
