@@ -10181,7 +10181,6 @@ end)
                             pcall(function()
                                 if TPAuraTarget == nil then TPAuraTarget = EntityNearMouse(10000) end
                                 if TPAuraTarget then
-                                    oCam = workspace.CurrentCamera.CameraSubject
                                     if TPAuraCamera.Enabled then
                                         workspace.CurrentCamera.CameraSubject = TPAuraTarget.Character
                                     end
@@ -10200,7 +10199,7 @@ end)
                 else
                     TPAuraTarget = nil
                     yesConnection:Disconnect()
-                    workspace.CurrentCamera.CameraSubject = oCam
+                    workspace.CurrentCamera.CameraSubject = entityLibrary.character
                 end
             end
         })
