@@ -10104,8 +10104,29 @@ end)
             Function = function(callback)
                 if callback then
                     task.spawn(function()
-                        entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(EntityNearPosition(25000).Character.HumanoidRootPart.Position)
+                        entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(EntityNearPosition(25000).Character.HumanoidRootPart.Position + Vector3.new(0, 7, 0))
                         BypassPlayerTP.ToggleButton(false)
+                    end)
+                end
+            end
+        })
+    end)
+
+    runFunction(function()
+        local AutoChestSkywars = {Enabled = false}
+        AutoChestSkywars = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+            Name = "AutoChestSkywars",
+            Function = function(callback)
+                if callback then
+                    task.spawn(function()
+                        for _, v in (workspace:GetChildren()) do
+                            if v.Name == "chest" and v:FindFirstChild("ChestFolderValue") then
+                                entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(v.Position + Vector3.new(0, 4, 0))
+                                task.wait(0.2)
+                            end
+                        end
+                        warningNotification("AutoChestSkywars", "Collected all chests", 3)
+                        AutoChestSkywars.ToggleButton(false)
                     end)
                 end
             end
