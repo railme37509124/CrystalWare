@@ -10175,7 +10175,7 @@ end)
                     task.spawn(function()
                         repeat task.wait(3)
                             pcall(function()
-                                local TPAuraTarget = EntityNearMouse(10000)
+                                if not TPAuraTarget then local TPAuraTarget = EntityNearMouse(10000) end
                                 if TPAuraTarget then
                                     local oldposition = entityLibrary.character.HumanoidRootPart.CFrame
                                     entityLibrary.character.HumanoidRootPart.CFrame = TPAuraTarget.Character.HumanoidRootPart.CFrame
