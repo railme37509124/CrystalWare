@@ -10172,27 +10172,7 @@ end)
         local clone2
         local tpauracon
         local tpauracon2
-        local enableThing = function()
-            pcall(function()
-                local oldRoot = entityLibrary.character.HumanoidRootPart
-                local clone = oldRoot:Clone()
-                
-                lplr.Character.Parent = game
-                clone2 = oldRoot:Clone()
-                clone2.Parent = lplr.Character
-                oldRoot.Parent = game.Workspace.CurrentCamera
-                clone2.CFrame = oldRoot.CFrame
-                lplr.Character.PrimaryPart = clone2
-                lplr.Character.Parent = workspace
-                oldRoot.Transparency = .5
-                clone2.Transparency = 1
-                oldRoot.CanCollide = true
-                clone2.Color = Color3.fromRGB(0,0,0)
-                oldRoot.Color = Color3.fromRGB(255, 255, 255)
-                clone2.CanCollide = true
-                oldRoot.Anchored = false
-            end)
-        end
+
 
         --[[local TPAuraRange = {Value = 0}
         local TPAuraStay = {Value = 0}--]]
@@ -10201,22 +10181,35 @@ end)
             Function = function(callback)
                 if callback then
                     task.spawn(function()
-                        enableThing()
+                        --a
                         --a
                         --a
                         tpauracon = lplr.CharacterAdded:Connect(function()
                             task.wait(0.3)
-                            enablefunc()
+                            local oldRoot = entityLibrary.character.HumanoidRootPart
+                            local clone = oldRoot:Clone()
+                            
+                            lplr.Character.Parent = game
+                            clone2 = oldRoot:Clone()
+                            clone2.Parent = lplr.Character
+                            oldRoot.Parent = game.Workspace.CurrentCamera
+                            clone2.CFrame = oldRoot.CFrame
+                            lplr.Character.PrimaryPart = clone2
+                            lplr.Character.Parent = workspace
+                            oldRoot.Transparency = .5
+                            clone2.Transparency = 1
+                            oldRoot.CanCollide = true
+                            clone2.Color = Color3.fromRGB(0,0,0)
+                            oldRoot.Color = Color3.fromRGB(255, 255, 255)
+                            clone2.CanCollide = true
+                            oldRoot.Anchored = false
                         end)
                         task.spawn(function()
-                            tpauracon2 = oldRoot:GetPropertyChangedSignal("Position"):Connect(function()
-                                pcall(function()
-                                    --workspace.CurrentCamera.CameraSubject = clone2
-                                    if not isAuring then
-                                        clone2.CFrame = oldRoot.CFrame
-                                    end
-                                end)
-                            end)
+                            repeat task.wait()
+                                if not isAuring then
+                                    clone2.CFrame = oldRoot.CFrame
+                                end
+                            until (not TPAura.Enabled)
                         end)
                         repeat task.wait(TPAuraInt.Value)
                             pcall(function()
