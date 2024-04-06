@@ -10174,14 +10174,12 @@ end)
                 if callback then
                     task.spawn(function()
                         pcall(function()
-                            local TPAuraTarget = EntityNearPosition(10000)
+                            local TPAuraTarget = EntityNearMouse(10000)
                             if TPAuraTarget then
                                 local oldposition = entityLibrary.character.HumanoidRootPart.Position
                                 entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(TPAuraTarget.Character.HumanoidRootPart.Position)
-                                game.CurrentCamera.CameraType = Enum.CameraType.Scriptable
                                 task.wait(0.2)
                                 entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(oldposition)
-                                game.CurrentCamera.CameraType = Enum.CameraType.Custom
                             end
                         end)
                     end)
