@@ -10067,8 +10067,11 @@ end)
             Function = function(callback)
                 if callback then
                     repeat task.wait()
-                        bedwars.Client:Get('RocketImpulse'):CallServer({velocity = Vector3.new(math.huge, math.huge, math.huge)})
-                        bedwars.ClientHandler:Get('RocketImpulse'):CallServer({velocity = Vector3.new(math.huge, math.huge, math.huge)})
+                         game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("RocketImpulse"):InvokeServer(unpack({
+                            [1] = {
+                                ["velocity"] = Vector3.new(9e9, 9e9, 9e9)
+                            }
+                        }))
                     until (not AnticheatDisabler.Enabled)
                 end
             end
