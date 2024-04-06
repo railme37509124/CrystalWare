@@ -10104,7 +10104,7 @@ end)
             Function = function(callback)
                 if callback then
                     task.spawn(function()
-                        entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(EntityNearPosition(25000).Character.HumanoidRootPart.Position + Vector3.new(0, 7, 0))
+                        entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(EntityNearPosition(25000).Character.HumanoidRootPart.Position + Vector3.new(8, 8, 8))
                         BypassPlayerTP.ToggleButton(false)
                     end)
                 end
