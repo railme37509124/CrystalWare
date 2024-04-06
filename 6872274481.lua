@@ -10207,11 +10207,11 @@ end)
                             enablefunc()
                         end)
                         task.spawn(function()
-                            tpauracon2 = clone2:GetPropertyChangedSignal("Position"):Connect(function()
+                            tpauracon2 = oldRoot:GetPropertyChangedSignal("Position"):Connect(function()
                                 pcall(function()
                                     --workspace.CurrentCamera.CameraSubject = clone2
                                     if not isAuring then
-                                        oldRoot.CFrame = clone2.CFrame
+                                        clone2.CFrame = oldRoot.CFrame
                                     end
                                 end)
                             end)
@@ -10226,9 +10226,9 @@ end)
                                         repeat task.wait() TPAuraTarget = EntityNearMouse(10000) until (TPAuraTarget)
                                     end)
                                     local oldposition = oldRoot.CFrame
-                                    oldRoot.CFrame = TPAuraTarget.Character.HumanoidRootPart.CFrame
+                                    clone2.CFrame = TPAuraTarget.Character.HumanoidRootPart.CFrame
                                     task.wait(0.2)
-                                    oldRoot.CFrame = oldposition
+                                    clone2.CFrame = oldposition
                                     isAuring = false
                                 end
                             end)
