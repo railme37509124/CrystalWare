@@ -10179,6 +10179,7 @@ end)
                             pcall(function()
                                 if TPAuraTarget == nil then TPAuraTarget = EntityNearMouse(10000) end
                                 if TPAuraTarget then
+                                    workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
                                     yesConnection = TPAuraTarget.Character.Humanoid.Died:Connect(function()
                                         TPAuraTarget = nil
                                         repeat task.wait() TPAuraTarget = EntityNearMouse(10000) until (TPAuraTarget)
@@ -10187,6 +10188,7 @@ end)
                                     entityLibrary.character.HumanoidRootPart.CFrame = TPAuraTarget.Character.HumanoidRootPart.CFrame
                                     task.wait(0.2)
                                     entityLibrary.character.HumanoidRootPart.CFrame = oldposition
+                                    workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
                                 end
                             end)
                         until (not TPAura.Enabled)
