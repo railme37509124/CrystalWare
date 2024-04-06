@@ -10187,8 +10187,8 @@ end)
                 oldRoot.Transparency = .5
                 clone2.Transparency = 1
                 oldRoot.CanCollide = true
-                clone2.Color = Color3.new(1, 0, 0)
-                oldRoot.Color = Color3.new(0.356863, 1, 0.00784314)
+                clone2.Color = Color3.fromRGB(0,0,0)
+                oldRoot.Color = Color3.fromRGB(255, 255, 255)
                 clone2.CanCollide = true
                 oldRoot.Anchored = false
             end)
