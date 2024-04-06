@@ -10308,23 +10308,25 @@ end)
         local hasTeleported = false
         local TweenService = game:GetService("TweenService")
     
-        function findNearestBed()
+        function findNearestBed(magCheck)
             local nearestBed = nil
             local minDistance = math.huge
     
             for _,v in pairs(game.Workspace:GetDescendants()) do
                 if v.Name:lower() == "bed" and v:FindFirstChild("Covers") and v:FindFirstChild("Covers").BrickColor ~= lplr.Team.TeamColor then
                     local distance = (v.Position - lplr.Character.HumanoidRootPart.Position).magnitude
-                    if distance < minDistance then
+                    if distance < minDistance and magCheck then
                         nearestBed = v
                         minDistance = distance
+                    else
+                        nearestBed = v
                     end
                 end
             end
             return nearestBed
         end
         function tweenToNearestBed()
-            local nearestBed = findNearestBed()
+            local nearestBed = findNearestBed(true)
             if nearestBed and not hasTeleported then
                 hasTeleported = true
     
@@ -10348,6 +10350,19 @@ end)
                 end
             end,
             ["HoverText"] = "Tp To Closest Bed | Works in 30v30 😱"
+        })
+
+        local BypassBedTP = {Enabled = false}
+        BypassBedTP = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+            Name = "BypassBedTP",
+            Function = function(callback)
+                if callback then
+                    task.spawn(function()
+                        local selectedBed = findNearestBed(false)
+                        entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(selectedBed.Position)
+                    end)
+                end
+            end
         })
     end)
     runFunction(function()
