@@ -10167,7 +10167,7 @@ end)
         local TPAura = {Enabled = false}
         local TPAuraTarget = nil
         local yesConnection
-        local TPAuraInt = {Value = 0}
+        local TPAuraInt = {Value = 3}
         --[[local TPAuraRange = {Value = 0}
         local TPAuraStay = {Value = 0}--]]
         TPAura = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
