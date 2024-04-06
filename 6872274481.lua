@@ -10045,9 +10045,11 @@ end)
             Name = "ConfettiExploit",
             Function = function(callback)
                 if callback then
-                    repeat task.wait(ConfettiExploitDelay.Value / 1000)
-                        game:GetService("ReplicatedStorage"):WaitForChild("events-@easy-games/game-core:shared/game-core-networking@getEvents.Events"):WaitForChild("useAbility"):FireServer("PARTY_POPPER")
-                    until (not ConfettiExploit.Enabled)
+                    task.spawn(function()
+                        repeat task.wait(ConfettiExploitDelay.Value / 1000)
+                            game:GetService("ReplicatedStorage"):WaitForChild("events-@easy-games/game-core:shared/game-core-networking@getEvents.Events"):WaitForChild("useAbility"):FireServer("PARTY_POPPER")
+                        until (not ConfettiExploit.Enabled)
+                    end)
                 end
             end
         })
@@ -10166,22 +10168,22 @@ end)
         --[[local TPAuraInt = {Value = 0}
         local TPAuraRange = {Value = 0}
         local TPAuraStay = {Value = 0}--]]
-        local TPAuraTarget
-        local oldPosition
         TPAura = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
             Name = "TPAura",
             Function = function(callback)
                 if callback then
                     task.spawn(function()
-                        repeat task.wait(3)
-                            if TPAuraTarget == nil then TPAuraTarget = EntityNearPosition(100000) end
-                            oldPosition = entityLibrary.character.HumanoidRootPart.CFrame
-                            entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(TPAuraTarget.Character.HumanoidRootPart.Position)
-                            workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
-                            warningNotification("TPAura", "Target: "..TPAuraTarget.Name)
-                            task.wait(0.8)
-                            workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
-                            entityLibrary.character.HumanoidRootPart.CFrame = oldPosition
+                        repeat
+                            pcall(function()
+                                local TPAuraTarget = EntityNearPosition(10000)
+                                if TPAuraTarget then
+                                    local oldposition = entityLibrary.character.HumanoidRootPart.Position
+                                    entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(TPAuraTarget.Character.HumanoidRootPart.Position)
+                                    task.wait(0.8)
+                                    entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(oldposition)
+                                    task.wait(3.8)
+                                end
+                            end)
                         until (not TPAura.Enabled)
                     end)
                 end
