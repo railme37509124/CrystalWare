@@ -10173,18 +10173,17 @@ end)
             Function = function(callback)
                 if callback then
                     task.spawn(function()
-                        repeat
-                            pcall(function()
-                                local TPAuraTarget = EntityNearPosition(10000)
-                                if TPAuraTarget then
-                                    local oldposition = entityLibrary.character.HumanoidRootPart.Position
-                                    entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(TPAuraTarget.Character.HumanoidRootPart.Position)
-                                    task.wait(0.8)
-                                    entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(oldposition)
-                                    task.wait(3.8)
-                                end
-                            end)
-                        until (not TPAura.Enabled)
+                        pcall(function()
+                            local TPAuraTarget = EntityNearPosition(10000)
+                            if TPAuraTarget then
+                                local oldposition = entityLibrary.character.HumanoidRootPart.Position
+                                entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(TPAuraTarget.Character.HumanoidRootPart.Position)
+                                task.wait(0.8)
+                                entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(oldposition)
+                                task.wait(3.8)
+                            end
+                        end)
+                        TPAura.ToggleButton(false)
                     end)
                 end
             end
