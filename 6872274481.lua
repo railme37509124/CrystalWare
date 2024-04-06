@@ -10171,6 +10171,7 @@ end)
         local oldcloneroot
         local clone
         local tpauracon
+        local tpauracon2
         local enableThing = function()
             pcall(function()
                 lplr.Character.Parent = game
@@ -10197,8 +10198,7 @@ end)
                             enablefunc()
                         end)
                         task.spawn(function()
-                            clone:GetPropertyChangedSignal("Position"):Connect(function()
-
+                            tpauracon2 = clone:GetPropertyChangedSignal("Position"):Connect(function()
                                 pcall(function()
                                     workspace.CurrentCamera.CameraSubject = clone
                                     if not isAuring then
@@ -10230,6 +10230,7 @@ end)
                     TPAuraTarget = nil
                     yesConnection:Disconnect()
                     tpauracon:Disconnect()
+                    tpauracon2:Disconnect()
                 end
             end
         })
