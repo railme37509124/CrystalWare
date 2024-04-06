@@ -10199,7 +10199,7 @@ end)
                 else
                     TPAuraTarget = nil
                     yesConnection:Disconnect()
-                    workspace.CurrentCamera.CameraSubject = entityLibrary.character
+                    workspace.CurrentCamera.CameraSubject = entityLibrary.character.Head.Parent
                 end
             end
         })
