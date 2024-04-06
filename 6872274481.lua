@@ -10167,15 +10167,15 @@ end)
         local TPAura = {Enabled = false}
         local TPAuraTarget = nil
         local yesConnection
-        --[[local TPAuraInt = {Value = 0}
-        local TPAuraRange = {Value = 0}
+        local TPAuraInt = {Value = 0}
+        --[[local TPAuraRange = {Value = 0}
         local TPAuraStay = {Value = 0}--]]
         TPAura = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
             Name = "TPAura",
             Function = function(callback)
                 if callback then
                     task.spawn(function()
-                        repeat task.wait(3)
+                        repeat task.wait(TPAuraInt.Value)
                             pcall(function()
                                 if TPAuraTarget == nil then TPAuraTarget = EntityNearMouse(10000) end
                                 if TPAuraTarget then
@@ -10197,14 +10197,14 @@ end)
                 end
             end
         })
-        --[[TPAuraInt = TPAura.CreateSlider({
-            Name = "Wait",
-            Min = 0,
-            Max = 15, 
+        TPAuraInt = TPAura.CreateSlider({
+            Name = "Speed",
+            Min = 1,
+            Max = 10, 
             Function = function(val) end,
             Default = 3
         })
-        TPAuraRange = TPAura.CreateSlider({
+        --[[TPAuraRange = TPAura.CreateSlider({
             Name = "Range",
             Min = 5,
             Max = 10000, 
