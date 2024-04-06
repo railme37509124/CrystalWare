@@ -10100,6 +10100,24 @@ end)
     end)
 
     runFunction(function()
+        local AutoWinSkywarsV2 = {Enabled = false}
+        AutoWinSkywarsV2 = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+            Name = "AutoWinSkywarsV2",
+            Function = function(callback)
+                if callback then
+                    task.spawn(function()
+                        for _, p in game.Players:GetPlayers() do
+                            local ray = workspace:Raycast(entityLibrary.character.HumanoidRootPart.Position, Vector3.new(0, 5, 0), bedwarsStore.blockRaycast)
+                            entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(p.Character.HumanoidRootPart.Position + Vector3.new(0, (ray and 0 or 5), 0))
+                            task.wait(0.1)
+                        end
+                    end)
+                end
+            end
+        })
+    end)
+
+    runFunction(function()
         local BypassPlayerTP = {Enabled = false}
         BypassPlayerTP = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
             Name = "BypassPlayerTP",
