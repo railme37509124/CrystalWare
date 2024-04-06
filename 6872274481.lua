@@ -10178,7 +10178,8 @@ end)
                             oldPosition = entityLibrary.character.HumanoidRootPart.CFrame
                             entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(TPAuraTarget.Character.HumanoidRootPart.Position)
                             workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
-                            task.wait(0.3)
+                            warningNotification("TPAura", "Target: "..TPAuraTarget.Name, 3)
+                            task.wait(1)
                             workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
                             entityLibrary.character.HumanoidRootPart.CFrame = oldPosition
                         until (not TPAura.Enabled)
