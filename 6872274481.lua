@@ -10165,7 +10165,7 @@ end)
 
     runFunction(function()
         local TPAura = {Enabled = false}
-        local TPAuraTarget
+        local TPAuraTarget = nil
         --[[local TPAuraInt = {Value = 0}
         local TPAuraRange = {Value = 0}
         local TPAuraStay = {Value = 0}--]]
