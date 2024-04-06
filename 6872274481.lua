@@ -10185,7 +10185,6 @@ end)
                             end)
                         until (not TPAura.Enabled)
                     end)
-                    TPAura.ToggleButton(false)
                 end
             end
         })
