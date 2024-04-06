@@ -10066,6 +10066,7 @@ end)
             Name = "AnticheatDisabler",
             Function = function(callback)
                 if callback then
+                    warningNotification("AnticheatDisabler", "Disabled Anticheat!")
                     repeat task.wait()
                          game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("RocketImpulse"):InvokeServer(unpack({
                             [1] = {
@@ -10847,7 +10848,6 @@ end)
             end,
             Default = 0
         })
-        if string.lower(identifyexecutor()):find("arceus") then warningNotification("FUCK THIS", "HOLY SHIT ARCEUS X IS SO DOG SHIT", 5) end
     end)
 
     runFunction(function()
