@@ -10082,9 +10082,25 @@ end)
     end)
 
     runFunction(function()
-        local PlayerAnticheatTP = {Enabled = false}
-        PlayerAnticheatTP = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
-            Name = "PlayerAnticheatTP",
+        local AutoWinSkywars = {Enabled = false}
+        AutoWinSkywars = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+            Name = "AutoWinSkywars",
+            Function = function(callback)
+                if callback then
+                    task.spawn(function()
+                        repeat task.wait()
+                            entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(game.Players[math.random(1, #game.Players:GetPlayers())].Character.HumanoidRootPart.Position)
+                        until (not AutoWinSkywars.Enabled)
+                    end)
+                end
+            end
+        })
+    end)
+
+    runFunction(function()
+        local BypassPlayerTP = {Enabled = false}
+        BypassPlayerTP = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+            Name = "BypassPlayerTP",
             Function = function(callback)
                 if callback then
                     task.spawn(function()
