@@ -10162,11 +10162,35 @@ end)
     end)
 
     runFunction(function()
+        local TPAura = {Enabled = false}
+        local TPAuraInt = {Value = 0}
+        local TPAuraRange = {Value = 0}
+        local TPAuraTarget
+        local oldPosition
+        TPAura = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+            Name = "TPAura",
+            Function = function(callback)
+                if callback then
+                    task.spawn(function()
+                        repeat
+                            TPAuraTarget = EntityNearPosition(TPAuraRange.Value)
+                            oldPosition = entityLibrary.character.HumanoidRootPart.CFrame
+                            entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(TPAuraTarget.Character.HumanoidRootPart.Position)
+                            task.wait(TPAuraInt.Value)
+                            entityLibrary.character.HumanoidRootPart.CFrame = oldPosition
+                        until (not TPAura.Enabled)
+                    end)
+                end
+            end
+        })
+    end)
+
+    runFunction(function()
         local AnimationDisabler = {Enabled = false}
         local AnimationDisablerAfter = {Value = 0}
         local AnimationDisablerConncetion
         AnimationDisabler = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
-            Name = "AnimationDisabler",
+            Name = "AnimationDisabler", 
             Function = function(callback)
                 if callback then
                     entityLibrary.character.Animate.Disabled = true
