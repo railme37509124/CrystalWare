@@ -10089,7 +10089,7 @@ end)
                 if callback then
                     task.spawn(function()
                         repeat task.wait()
-                            entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(game.Players[math.random(1, #game.Players:GetPlayers())].Character.HumanoidRootPart.Position)
+                            entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(EntityNearPosition(25000).Character.HumanoidRootPart.Position)
                         until (not AutoWinSkywars.Enabled)
                     end)
                 end
@@ -10104,7 +10104,7 @@ end)
             Function = function(callback)
                 if callback then
                     task.spawn(function()
-                        entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(game.Players[math.random(1, #game.Players:GetPlayers())].Character.HumanoidRootPart.Position)
+                        entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(EntityNearPosition(25000).Character.HumanoidRootPart.Position)
                     end)
                 end
             end
