@@ -10174,6 +10174,7 @@ end)
         local tpauracon2
         local enableThing = function()
             pcall(function()
+                oldcloneroot = entityLibrary.character.HumanoidRootPart
                 lplr.Character.Parent = game
                 clone = oldcloneroot:Clone()
                 clone.Parent = lplr.Character
