@@ -10183,6 +10183,20 @@ end)
                 end
             end
         })
+        TPAuraInt = TPAura.CreateSlider({
+            Name = "Wait",
+            Min = 0,
+            Max = 15, 
+            Function = function(val) end,
+            Default = 3
+        })
+        TPAuraRange = TPAura.CreateSlider({
+            Name = "Range",
+            Min = 5,
+            Max = 10000, 
+            Function = function(val) end,
+            Default = 10000
+        })
     end)
 
     runFunction(function()
