@@ -10089,9 +10089,11 @@ end)
                 if callback then
                     task.spawn(function()
                         repeat task.wait()
-                            local p = EntityNearPosition(25000)
-                            local ray = workspace:Raycast(entityLibrary.character.HumanoidRootPart.Position, Vector3.new(0, 5, 0), bedwarsStore.blockRaycast)
-                            entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(p.Character.HumanoidRootPart.Position + Vector3.new(0, (ray and 0 or 5), 0))
+                            pcall(function()
+                                local p = EntityNearPosition(25000)
+                                local ray = workspace:Raycast(entityLibrary.character.HumanoidRootPart.Position, Vector3.new(0, 5, 0), bedwarsStore.blockRaycast)
+                                entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(p.Character.HumanoidRootPart.Position + Vector3.new(0, (ray and 0 or 5), 0))
+                            end)
                         until (not AutoWinSkywars.Enabled)
                     end)
                 end
@@ -10106,11 +10108,15 @@ end)
             Function = function(callback)
                 if callback then
                     task.spawn(function()
-                        for _, p in game.Players:GetPlayers() do
-                            local ray = workspace:Raycast(entityLibrary.character.HumanoidRootPart.Position, Vector3.new(0, 5, 0), bedwarsStore.blockRaycast)
-                            entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(p.Character.HumanoidRootPart.Position + Vector3.new(0, (ray and 0 or 5), 0))
-                            task.wait(0.1)
-                        end
+                        repeat task.wait()
+                            for _, p in game.Players:GetPlayers() do
+                                pcall(function()
+                                    local ray = workspace:Raycast(entityLibrary.character.HumanoidRootPart.Position, Vector3.new(0, 5, 0), bedwarsStore.blockRaycast)
+                                    entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(p.Character.HumanoidRootPart.Position + Vector3.new(0, (ray and 0 or 5), 0))
+                                    task.wait(0.1)
+                                end)
+                            end
+                        until (not AutoWinSkywarsV2.Enabled)
                     end)
                 end
             end
@@ -10124,7 +10130,9 @@ end)
             Function = function(callback)
                 if callback then
                     task.spawn(function()
-                        entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(EntityNearPosition(25000).Character.HumanoidRootPart.Position + Vector3.new(0, 12, 0))
+                        pcall(function()
+                            entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(EntityNearPosition(25000).Character.HumanoidRootPart.Position + Vector3.new(0, 12, 0))
+                        end)
                         BypassPlayerTP.ToggleButton(false)
                     end)
                 end
