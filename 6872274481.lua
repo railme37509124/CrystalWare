@@ -10186,10 +10186,10 @@ end)
                 lplr.Character.Parent = workspace
                 oldRoot.Transparency = .5
                 clone2.Transparency = 1
-                oldRoot.CanCollide = false
+                oldRoot.CanCollide = true
                 clone2.Color = Color3.new(1, 0, 0)
                 oldRoot.Color = Color3.new(0.356863, 1, 0.00784314)
-                clone2.CanCollide = false
+                clone2.CanCollide = true
                 oldRoot.Anchored = false
             end)
         end
@@ -10209,7 +10209,7 @@ end)
                         task.spawn(function()
                             tpauracon2 = clone2:GetPropertyChangedSignal("Position"):Connect(function()
                                 pcall(function()
-                                    workspace.CurrentCamera.CameraSubject = clone2
+                                    --workspace.CurrentCamera.CameraSubject = clone2
                                     if not isAuring then
                                         oldRoot.CFrame = clone2.CFrame
                                     end
