@@ -10122,7 +10122,7 @@ end)
                         for _, v in (workspace:GetChildren()) do
                             if v.Name == "chest" and v:FindFirstChild("ChestFolderValue") then
                                 entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(v.Position + Vector3.new(0, 4, 0))
-                                task.wait(0.1)
+                                task.wait(0.6)
                             end
                         end
                         warningNotification("AutoChestSkywars", "Collected all chests", 3)
