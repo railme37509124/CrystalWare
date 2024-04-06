@@ -10197,7 +10197,7 @@ end)
                             enablefunc()
                         end)
                         task.spawn(function()
-                            repeat task.wait() clone:GetPropertyChangedSignal("Position"):Connect(function()
+                            clone:GetPropertyChangedSignal("Position"):Connect(function()
 
                                 pcall(function()
                                     workspace.CurrentCamera.CameraSubject = clone
