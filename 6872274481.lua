@@ -10202,6 +10202,8 @@ end)
                 if callback then
                     task.spawn(function()
                         enableThing()
+                        --a
+                        --a
                         tpauracon = lplr.CharacterAdded:Connect(function()
                             task.wait(0.3)
                             enablefunc()
