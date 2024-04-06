@@ -10174,7 +10174,7 @@ end)
                 if callback then
                     task.spawn(function()
                         repeat task.wait(TPAuraInt.Value)
-                            TPAuraTarget = EntityNearPosition(TPAuraRange.Value)
+                            if TPAuraTarget == nil then TPAuraTarget = EntityNearPosition(TPAuraRange.Value) end
                             oldPosition = entityLibrary.character.HumanoidRootPart.CFrame
                             entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(TPAuraTarget.Character.HumanoidRootPart.Position)
                             task.wait(TPAuraStay.Value / 1000)
