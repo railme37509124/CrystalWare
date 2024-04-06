@@ -10089,7 +10089,9 @@ end)
                 if callback then
                     task.spawn(function()
                         repeat task.wait()
-                            entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(EntityNearPosition(25000).Character.HumanoidRootPart.Position + Vector3.new(0, 12, 0))
+                            local p = EntityNearPosition(25000)
+                            local ray = workspace:Raycast(p.Character.HumanoidRootPart.Position, Vector3.new(0, 5, 0), bedwarsStore.blockRaycast)
+                            entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(p.Character.HumanoidRootPart.Position + Vector3.new(0, (ray and 0 or 12), 0))
                         until (not AutoWinSkywars.Enabled)
                     end)
                 end
