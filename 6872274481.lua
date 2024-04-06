@@ -10167,7 +10167,9 @@ end)
         local TPAura = {Enabled = false}
         local TPAuraTarget = nil
         local yesConnection
+        local oCam
         local TPAuraInt = {Value = 3}
+        local TPAuraCamera = {Enabled = false}
         --[[local TPAuraRange = {Value = 0}
         local TPAuraStay = {Value = 0}--]]
         TPAura = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
@@ -10179,6 +10181,10 @@ end)
                             pcall(function()
                                 if TPAuraTarget == nil then TPAuraTarget = EntityNearMouse(10000) end
                                 if TPAuraTarget then
+                                    oCam = workspace.CurrentCamera.CameraSubject
+                                    if TPAuraCamera.Enabled then
+                                        workspace.CurrentCamera.CameraSubject = TPAuraTarget.Character
+                                    end
                                     yesConnection = TPAuraTarget.Character.Humanoid.Died:Connect(function()
                                         TPAuraTarget = nil
                                         repeat task.wait() TPAuraTarget = EntityNearMouse(10000) until (TPAuraTarget)
@@ -10194,6 +10200,7 @@ end)
                 else
                     TPAuraTarget = nil
                     yesConnection:Disconnect()
+                    workspace.CurrentCamera.CameraSubject = oCam
                 end
             end
         })
@@ -10204,20 +10211,12 @@ end)
             Function = function(val) end,
             Default = 3
         })
-        --[[TPAuraRange = TPAura.CreateSlider({
-            Name = "Range",
-            Min = 5,
-            Max = 10000, 
-            Function = function(val) end,
-            Default = 10000
+        TPAuraCamera = TPAura.CreateToggle({
+            Name = "Camera",
+            Function = function() end,
+            Default = false,
+            HoverText = "View the target"
         })
-        TPAuraStay = TPAura.CreateSlider({
-            Name = "Stay (ms)",
-            Min = 100,
-            Max = 2000, 
-            Function = function(val) end,
-            Default = 10000
-        })--]]
     end)
 
     
