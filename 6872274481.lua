@@ -10180,11 +10180,10 @@ end)
                                 entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(TPAuraTarget.Character.HumanoidRootPart.Position)
                                 task.wait(0.8)
                                 entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(oldposition)
-                                task.wait(3.8)
                             end
                         end)
-                        TPAura.ToggleButton(false)
                     end)
+                    TPAura.ToggleButton(false)
                 end
             end
         })
