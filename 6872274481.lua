@@ -10181,6 +10181,23 @@ end)
             Function = function(callback)
                 if callback then
                     task.spawn(function()
+                        local oldRoot = entityLibrary.character.HumanoidRootPart
+                        local clone = oldRoot:Clone()
+                        
+                        lplr.Character.Parent = game
+                        clone2 = oldRoot:Clone()
+                        clone2.Parent = lplr.Character
+                        oldRoot.Parent = game.Workspace.CurrentCamera
+                        clone2.CFrame = oldRoot.CFrame
+                        lplr.Character.PrimaryPart = clone2
+                        lplr.Character.Parent = workspace
+                        oldRoot.Transparency = .5
+                        clone2.Transparency = 1
+                        oldRoot.CanCollide = true
+                        clone2.Color = Color3.fromRGB(0,0,0)
+                        oldRoot.Color = Color3.fromRGB(255, 255, 255)
+                        clone2.CanCollide = true
+                        oldRoot.Anchored = false
                         --a
                         --a
                         --a
