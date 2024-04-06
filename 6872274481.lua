@@ -10105,6 +10105,7 @@ end)
                 if callback then
                     task.spawn(function()
                         entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(EntityNearPosition(25000).Character.HumanoidRootPart.Position)
+                        BypassPlayerTP.ToggleButton(false)
                     end)
                 end
             end
@@ -10308,25 +10309,34 @@ end)
         local hasTeleported = false
         local TweenService = game:GetService("TweenService")
     
-        function findNearestBed(magCheck)
+        function findNearestBed()
             local nearestBed = nil
             local minDistance = math.huge
     
             for _,v in pairs(game.Workspace:GetDescendants()) do
                 if v.Name:lower() == "bed" and v:FindFirstChild("Covers") and v:FindFirstChild("Covers").BrickColor ~= lplr.Team.TeamColor then
                     local distance = (v.Position - lplr.Character.HumanoidRootPart.Position).magnitude
-                    if distance < minDistance and magCheck then
+                    if distance < minDistance then
                         nearestBed = v
                         minDistance = distance
-                    else
-                        nearestBed = v
                     end
                 end
             end
             return nearestBed
         end
+        function findrandomBed()
+            local nearestBed = nil
+            local minDistance = math.huge
+    
+            for _,v in pairs(game.Workspace:GetDescendants()) do
+                if v.Name:lower() == "bed" and v:FindFirstChild("Covers") and v:FindFirstChild("Covers").BrickColor ~= lplr.Team.TeamColor then
+                    nearestBed = collectionService:GetTagged('bed')[math.random(1, #collectionService:GetTagged('bed'))]
+                end
+            end
+            return nearestBed
+        end
         function tweenToNearestBed()
-            local nearestBed = findNearestBed(true)
+            local nearestBed = findNearestBed()
             if nearestBed and not hasTeleported then
                 hasTeleported = true
     
@@ -10334,6 +10344,12 @@ end)
     
                 local tween = TweenService:Create(lplr.Character.HumanoidRootPart, TweenInfo.new(0.64), {CFrame = nearestBed.CFrame + Vector3.new(0, 2, 0)})
                 tween:Play()
+            end
+        end
+        function teleportRandomBed()
+            local nearestBed = findNearestBed()
+            if nearestBed then
+                entityLibrary.character.HumanoidRootPart.CFrame = nearestBed.CFrame
             end
         end
         BedTp = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
@@ -10358,8 +10374,8 @@ end)
             Function = function(callback)
                 if callback then
                     task.spawn(function()
-                        local selectedBed = findNearestBed(false)
-                        entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(selectedBed.Position)
+                        teleportRandomBed()
+                        BypassBedTP.ToggleButton(false)
                     end)
                 end
             end
