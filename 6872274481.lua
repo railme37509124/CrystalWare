@@ -10166,6 +10166,7 @@ end)
     runFunction(function()
         local TPAura = {Enabled = false}
         local TPAuraTarget = nil
+        local yesConnection
         --[[local TPAuraInt = {Value = 0}
         local TPAuraRange = {Value = 0}
         local TPAuraStay = {Value = 0}--]]
@@ -10178,6 +10179,10 @@ end)
                             pcall(function()
                                 if TPAuraTarget == nil then TPAuraTarget = EntityNearMouse(10000) end
                                 if TPAuraTarget then
+                                    yesConnection = TPAuraTarget.Character.Humanoid.Died:Connect(function()
+                                        TPAuraTarget = nil
+                                        repeat task.wait() TPAuraTarget = EntityNearMouse(10000) until (TPAuraTarget)
+                                    end)
                                     local oldposition = entityLibrary.character.HumanoidRootPart.CFrame
                                     entityLibrary.character.HumanoidRootPart.CFrame = TPAuraTarget.Character.HumanoidRootPart.CFrame
                                     task.wait(0.2)
@@ -10188,6 +10193,7 @@ end)
                     end)
                 else
                     TPAuraTarget = nil
+                    yesConnection:Disconnect()
                 end
             end
         })
