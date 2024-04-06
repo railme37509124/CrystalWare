@@ -10174,12 +10174,12 @@ end)
                 if callback then
                     task.spawn(function()
                         repeat task.wait(3)
-                            if TPAuraTarget == nil then TPAuraTarget = EntityNearPosition(TPAuraRange.Value) end
+                            if TPAuraTarget == nil then TPAuraTarget = EntityNearPosition(100000) end
                             oldPosition = entityLibrary.character.HumanoidRootPart.CFrame
                             entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(TPAuraTarget.Character.HumanoidRootPart.Position)
                             workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
-                            warningNotification("TPAura", "Target: "..TPAuraTarget.Name, 3)
-                            task.wait(1)
+                            warningNotification("TPAura", "Target: "..TPAuraTarget.Name)
+                            task.wait(0.8)
                             workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
                             entityLibrary.character.HumanoidRootPart.CFrame = oldPosition
                         until (not TPAura.Enabled)
