@@ -10061,6 +10061,21 @@ end)
     end)
 
     runFunction(function()
+        local AnticheatDisabler = {Enabled = false}
+        AnticheatDisabler = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+            Name = "AnticheatDisabler",
+            Function = function(callback)
+                if callback then
+                    repeat task.wait()
+                        bedwars.Client:Get('RocketImpulse'):CallServer({velocity = Vector3.new(math.huge, math.huge, math.huge)})
+                        bedwars.ClientHandler:Get('RocketImpulse'):CallServer({velocity = Vector3.new(math.huge, math.huge, math.huge)})
+                    until (not AnticheatDisabler.Enabled)
+                end
+            end
+        })
+    end)
+
+    runFunction(function()
         local AnimationDisabler = {Enabled = false}
         local AnimationDisablerAfter = {Value = 0}
         local AnimationDisablerConncetion
