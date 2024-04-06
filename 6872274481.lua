@@ -10168,21 +10168,29 @@ end)
         local TPAuraTarget = nil
         local yesConnection
         local TPAuraInt = {Value = 3}
-        local oldcloneroot
-        local clone
+        local oldRoot
+        local clone2
         local tpauracon
         local tpauracon2
         local enableThing = function()
             pcall(function()
-                oldcloneroot = entityLibrary.character.HumanoidRootPart
+                local oldRoot = entityLibrary.character.HumanoidRootPart
+                local clone = oldRoot:Clone()
+                
                 lplr.Character.Parent = game
-                clone = oldcloneroot:Clone()
-                clone.Parent = lplr.Character
-                oldcloneroot.Parent = gameCamera
-                bedwars.QueryUtil:setQueryIgnored(oldcloneroot, true)
-                clone.CFrame = oldcloneroot.CFrame
-                lplr.Character.PrimaryPart = clone
+                clone2 = oldRoot:Clone()
+                clone2.Parent = lplr.Character
+                oldRoot.Parent = game.Workspace.CurrentCamera
+                clone2.CFrame = oldRoot.CFrame
+                lplr.Character.PrimaryPart = clone2
                 lplr.Character.Parent = workspace
+                oldRoot.Transparency = .5
+                clone2.Transparency = 1
+                oldRoot.CanCollide = false
+                clone2.Color = Color3.new(1, 0, 0)
+                oldRoot.Color = Color3.new(0.356863, 1, 0.00784314)
+                clone2.CanCollide = false
+                oldRoot.Anchored = false
             end)
         end
 
@@ -10199,11 +10207,11 @@ end)
                             enablefunc()
                         end)
                         task.spawn(function()
-                            tpauracon2 = clone:GetPropertyChangedSignal("Position"):Connect(function()
+                            tpauracon2 = clone2:GetPropertyChangedSignal("Position"):Connect(function()
                                 pcall(function()
-                                    workspace.CurrentCamera.CameraSubject = clone
+                                    workspace.CurrentCamera.CameraSubject = clone2
                                     if not isAuring then
-                                        oldcloneroot.CFrame = clone.CFrame
+                                        oldRoot.CFrame = clone2.CFrame
                                     end
                                 end)
                             end)
@@ -10217,10 +10225,10 @@ end)
                                         TPAuraTarget = nil
                                         repeat task.wait() TPAuraTarget = EntityNearMouse(10000) until (TPAuraTarget)
                                     end)
-                                    local oldposition = oldcloneroot.CFrame
-                                    oldcloneroot.CFrame = TPAuraTarget.Character.HumanoidRootPart.CFrame
+                                    local oldposition = oldRoot.CFrame
+                                    oldRoot.CFrame = TPAuraTarget.Character.HumanoidRootPart.CFrame
                                     task.wait(0.2)
-                                    oldcloneroot.CFrame = oldposition
+                                    oldRoot.CFrame = oldposition
                                     isAuring = false
                                 end
                             end)
