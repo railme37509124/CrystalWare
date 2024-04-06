@@ -10163,9 +10163,9 @@ end)
 
     runFunction(function()
         local TPAura = {Enabled = false}
-        local TPAuraInt = {Value = 0}
+        --[[local TPAuraInt = {Value = 0}
         local TPAuraRange = {Value = 0}
-        local TPAuraStay = {Value = 0}
+        local TPAuraStay = {Value = 0}--]]
         local TPAuraTarget
         local oldPosition
         TPAura = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
@@ -10173,18 +10173,20 @@ end)
             Function = function(callback)
                 if callback then
                     task.spawn(function()
-                        repeat task.wait(TPAuraInt.Value)
+                        repeat task.wait(3)
                             if TPAuraTarget == nil then TPAuraTarget = EntityNearPosition(TPAuraRange.Value) end
                             oldPosition = entityLibrary.character.HumanoidRootPart.CFrame
                             entityLibrary.character.HumanoidRootPart.CFrame = CFrame.new(TPAuraTarget.Character.HumanoidRootPart.Position)
-                            task.wait(TPAuraStay.Value / 1000)
+                            workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
+                            task.wait(0.3)
+                            workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
                             entityLibrary.character.HumanoidRootPart.CFrame = oldPosition
                         until (not TPAura.Enabled)
                     end)
                 end
             end
         })
-        TPAuraInt = TPAura.CreateSlider({
+        --[[TPAuraInt = TPAura.CreateSlider({
             Name = "Wait",
             Min = 0,
             Max = 15, 
@@ -10204,7 +10206,7 @@ end)
             Max = 2000, 
             Function = function(val) end,
             Default = 10000
-        })
+        })--]]
     end)
 
     runFunction(function()
