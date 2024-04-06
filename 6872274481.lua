@@ -10168,6 +10168,22 @@ end)
         local TPAuraTarget = nil
         local yesConnection
         local TPAuraInt = {Value = 3}
+        local oldcloneroot
+        local clone
+        local tpauracon
+        local enableThing = function()
+            pcall(function()
+                lplr.Character.Parent = game
+                clone = oldcloneroot:Clone()
+                clone.Parent = lplr.Character
+                oldcloneroot.Parent = gameCamera
+                bedwars.QueryUtil:setQueryIgnored(oldcloneroot, true)
+                clone.CFrame = oldcloneroot.CFrame
+                lplr.Character.PrimaryPart = clone
+                lplr.Character.Parent = workspace
+            end)
+        end
+
         --[[local TPAuraRange = {Value = 0}
         local TPAuraStay = {Value = 0}--]]
         TPAura = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
@@ -10175,27 +10191,45 @@ end)
             Function = function(callback)
                 if callback then
                     task.spawn(function()
+                        enableThing()
+                        tpauracon = lplr.CharacterAdded:Connect(function()
+                            task.wait(0.3)
+                            enablefunc()
+                        end)
+                        task.spawn(function()
+                            repeat task.wait() clone:GetPropertyChangedSignal("Position"):Connect(function()
+
+                                pcall(function()
+                                    workspace.CurrentCamera.CameraSubject = clone
+                                    if not isAuring then
+                                        oldcloneroot.CFrame = clone.CFrame
+                                    end
+                                end)
+                            end)
+                        end)
                         repeat task.wait(TPAuraInt.Value)
                             pcall(function()
                                 if TPAuraTarget == nil then TPAuraTarget = EntityNearMouse(10000) end
                                 if TPAuraTarget then
-                                    workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
+                                    isAuring = true
                                     yesConnection = TPAuraTarget.Character.Humanoid.Died:Connect(function()
                                         TPAuraTarget = nil
                                         repeat task.wait() TPAuraTarget = EntityNearMouse(10000) until (TPAuraTarget)
                                     end)
-                                    local oldposition = entityLibrary.character.HumanoidRootPart.CFrame
-                                    entityLibrary.character.HumanoidRootPart.CFrame = TPAuraTarget.Character.HumanoidRootPart.CFrame
+                                    local oldposition = oldcloneroot.CFrame
+                                    oldcloneroot.CFrame = TPAuraTarget.Character.HumanoidRootPart.CFrame
                                     task.wait(0.2)
-                                    entityLibrary.character.HumanoidRootPart.CFrame = oldposition
-                                    workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
+                                    oldcloneroot.CFrame = oldposition
+                                    isAuring = false
                                 end
                             end)
                         until (not TPAura.Enabled)
                     end)
+
                 else
                     TPAuraTarget = nil
                     yesConnection:Disconnect()
+                    tpauracon:Disconnect()
                 end
             end
         })
