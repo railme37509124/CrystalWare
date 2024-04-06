@@ -10165,6 +10165,7 @@ end)
 
     runFunction(function()
         local TPAura = {Enabled = false}
+        local TPAuraTarget
         --[[local TPAuraInt = {Value = 0}
         local TPAuraRange = {Value = 0}
         local TPAuraStay = {Value = 0}--]]
@@ -10175,7 +10176,7 @@ end)
                     task.spawn(function()
                         repeat task.wait(3)
                             pcall(function()
-                                if not TPAuraTarget then local TPAuraTarget = EntityNearMouse(10000) end
+                                if TPAuraTarget == nil then TPAuraTarget = EntityNearMouse(10000) end
                                 if TPAuraTarget then
                                     local oldposition = entityLibrary.character.HumanoidRootPart.CFrame
                                     entityLibrary.character.HumanoidRootPart.CFrame = TPAuraTarget.Character.HumanoidRootPart.CFrame
@@ -10185,6 +10186,8 @@ end)
                             end)
                         until (not TPAura.Enabled)
                     end)
+                else
+                    TPAuraTarget = nil
                 end
             end
         })
