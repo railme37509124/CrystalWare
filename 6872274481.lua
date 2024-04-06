@@ -10066,14 +10066,16 @@ end)
             Name = "AnticheatDisabler",
             Function = function(callback)
                 if callback then
-                    warningNotification("AnticheatDisabler", "Disabled Anticheat!")
-                    repeat task.wait()
-                         game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("RocketImpulse"):InvokeServer(unpack({
-                            [1] = {
-                                ["velocity"] = Vector3.new(9e9, 9e9, 9e9)
-                            }
-                        }))
-                    until (not AnticheatDisabler.Enabled)
+                    warningNotification("AnticheatDisabler", "Disabled Anticheat!", 3)
+                    task.spawn(function()
+                        repeat task.wait()
+                            game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("RocketImpulse"):InvokeServer(unpack({
+                                [1] = {
+                                    ["velocity"] = Vector3.new(9e9, 9e9, 9e9)
+                                }
+                            }))
+                        until (not AnticheatDisabler.Enabled)
+                    end)
                 end
             end
         })
