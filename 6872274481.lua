@@ -10065,13 +10065,15 @@ end)
     run(function()
         local AnticheatDisabler = {Enabled = false}
         AnticheatDisabler = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
-            Name = "PartialDisabler",
+            Name = "AgniExploit",
             Function = function(callback)
                 if callback then
-                    warningNotification("PartialDisabler", "Bypassed Anticheat!", 3)
+                    if lplr:GetAttribute("playingAsKit") == "agni" then warningNotification("AnticheatBypass", "Bypassed Anticheat!", 3) else warningNotification("AnticheatBypass", "Failed to bypass", 3) return end
                     task.spawn(function()
                         repeat task.wait()
-                            game:GetService("ReplicatedStorage"):WaitForChild("events-@easy-games/game-core:shared/game-core-networking@getEvents.Events"):WaitForChild("useAbility"):FireServer("rocket_detonate")
+                            game:GetService("ReplicatedStorage"):WaitForChild("events-@easy-games/game-core:shared/game-core-networking@getEvents.Events"):WaitForChild("useAbility"):FireServer(unpack({
+                                [1] = "rocket_detonate"
+                            }))
                         until (not AnticheatDisabler.Enabled)
                     end)
                 end
