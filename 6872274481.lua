@@ -148,7 +148,7 @@ local function warningNotification(title, text, delay)
     return (suc and res)
 end
 
-local function runFunction(func) func() end
+local function run(func) func() end
 
 local function isFriend(plr, recolor)
     if GuiLibrary.ObjectsThatCanBeSaved["Use FriendsToggle"].Api.Enabled then
@@ -1126,7 +1126,7 @@ GuiLibrary.LoadSettingsEvent.Event:Connect(function(res)
     end
 end)
 
-runFunction(function()
+run(function()
     local function getWhitelistedBed(bed)
         if bed then
             for i,v in pairs(playersService:GetPlayers()) do
@@ -2131,7 +2131,7 @@ do
     textlabel.Parent = GuiLibrary.MainGui.ScaledGui.ClickGui
 end
 
-runFunction(function()
+run(function()
     local handsquare = Instance.new("ImageLabel")
     handsquare.Size = UDim2.new(0, 26, 0, 27)
     handsquare.BackgroundColor3 = Color3.fromRGB(26, 25, 26)
@@ -2212,7 +2212,7 @@ GuiLibrary.RemoveObject("AntiVoidOptionsButton")
 GuiLibrary.RemoveObject("SongBeatsOptionsButton")
 GuiLibrary.RemoveObject("TargetStrafeOptionsButton")
 
-runFunction(function()
+run(function()
     local AimAssist = {Enabled = false}
     local AimAssistClickAim = {Enabled = false}
     local AimAssistStrafe = {Enabled = false}
@@ -2274,7 +2274,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local autoclicker = {Enabled = false}
     local noclickdelay = {Enabled = false}
     local autoclickercps = {GetRandomValue = function() return 1 end}
@@ -2394,7 +2394,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local ReachValue = {Value = 14}
     Reach = GuiLibrary.ObjectsThatCanBeSaved.CombatWindow.Api.CreateOptionsButton({
         Name = "Reach",
@@ -2420,7 +2420,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local Sprint = {Enabled = false}
     local oldSprintFunction
     Sprint = GuiLibrary.ObjectsThatCanBeSaved.CombatWindow.Api.CreateOptionsButton({
@@ -2456,7 +2456,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local Velocity = {Enabled = false}
     local VelocityHorizontal = {Value = 100}
     local VelocityVertical = {Value = 100}
@@ -2497,7 +2497,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local AutoLeaveDelay = {Value = 1}
     local AutoPlayAgain = {Enabled = false}
     local AutoLeaveStaff = {Enabled = true}
@@ -2670,7 +2670,7 @@ runFunction(function()
     AutoLeaveStaff2.Object.Visible = false
 end)
 
-runFunction(function()
+run(function()
     local oldclickhold
     local oldclickhold2
     local roact 
@@ -2745,7 +2745,7 @@ runFunction(function()
 end)
 
 local autobankballoon = false
-runFunction(function()
+run(function()
     local Fly = {Enabled = false}
     local FlyMode = {Value = "CFrame"}
     local FlyVerticalSpeed = {Value = 40}
@@ -3078,7 +3078,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local GrappleExploit = {Enabled = false}
     local GrappleExploitMode = {Value = "Normal"}
     local GrappleExploitVerticalSpeed = {Value = 40}
@@ -3150,7 +3150,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local InfiniteFly = {Enabled = false}
     local InfiniteFlyMode = {Value = "CFrame"}
     local InfiniteFlySpeed = {Value = 23}
@@ -3393,7 +3393,7 @@ runFunction(function()
 end)
 
 local killauraNearPlayer
-runFunction(function()
+run(function()
     local killauraboxes = {}
     local killauratargetframe = {Players = {Enabled = false}}
     local killaurasortmethod = {Value = "Distance"}
@@ -4120,7 +4120,7 @@ runFunction(function()
 end)
 
 local LongJump = {Enabled = false}
-runFunction(function()
+run(function()
     local damagetimer = 0
     local damagetimertick = 0
     local directionvec
@@ -4410,7 +4410,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local NoFall = {Enabled = false}
     local oldfall
     NoFall = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
@@ -4429,7 +4429,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local NoSlowdown = {Enabled = false}
     local OldSetSpeedFunc
     NoSlowdown = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
@@ -4456,7 +4456,7 @@ end)
 
 local spiderActive = false
 local holdingshift = false
-runFunction(function()
+run(function()
     local activatePhase = false
     local oldActivatePhase = false
     local PhaseDelay = tick()
@@ -4511,7 +4511,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local oldCalculateAim
     local BowAimbotProjectiles = {Enabled = false}
     local BowAimbotPart = {Value = "HumanoidRootPart"}
@@ -4600,7 +4600,7 @@ end)
 --until I find a way to make the spam switch item thing not bad I'll just get rid of it, sorry.
 
 local Scaffold = {Enabled = false}
-runFunction(function()
+run(function()
     local scaffoldtext = Instance.new("TextLabel")
     scaffoldtext.Font = Enum.Font.SourceSans
     scaffoldtext.TextSize = 20
@@ -4806,7 +4806,7 @@ runFunction(function()
 end)
 
 local antivoidvelo
-runFunction(function()
+run(function()
     local Speed = {Enabled = false}
     local SpeedMode = {Value = "CFrame"}
     local SpeedValue = {Value = 1}
@@ -4940,7 +4940,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local function roundpos(dir, pos, size)
         local suc, res = pcall(function() return Vector3.new(math.clamp(dir.X, pos.X - (size.X / 2), pos.X + (size.X / 2)), math.clamp(dir.Y, pos.Y - (size.Y / 2), pos.Y + (size.Y / 2)), math.clamp(dir.Z, pos.Z - (size.Z / 2), pos.Z + (size.Z / 2))) end)
         return suc and res or Vector3.zero
@@ -5024,7 +5024,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local TargetStrafe = {Enabled = false}
     local TargetStrafeRange = {Value = 18}
     local oldmove
@@ -5091,7 +5091,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local BedESP = {Enabled = false}
     local BedESPFolder = Instance.new("Folder")
     BedESPFolder.Name = "BedESPFolder"
@@ -5154,7 +5154,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local function getallblocks2(pos, normal)
         local blocks = {}
         local lastfound = nil
@@ -5289,7 +5289,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local ChestESPList = {ObjectList = {}, RefreshList = function() end}
     local function nearchestitem(item)
         for i,v in pairs(ChestESPList.ObjectList) do 
@@ -5409,7 +5409,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local FieldOfViewValue = {Value = 70}
     local oldfov
     local oldfov2
@@ -5457,7 +5457,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local Messages = {"Wham!", "Pop!", "Boom!", "Whack!", "Hit!"}
     local old
     local FunnyIndicator = {Enabled = false}
@@ -5480,7 +5480,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local old
     local old2
     local oldhitpart 
@@ -5586,7 +5586,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local GameFixer = {Enabled = false}
     local GameFixerHit = {Enabled = false}
     GameFixer = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
@@ -5599,7 +5599,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local transformed = false
     local GameTheme = {Enabled = false}
     local GameThemeMode = {Value = "GameTheme"}
@@ -6053,7 +6053,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local oldkilleffect
     local KillEffectMode = {Value = "Gravity"}
     local KillEffectList = {Value = "None"}
@@ -6196,7 +6196,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local KitESP = {Enabled = false}
     local espobjs = {}
     local espfold = Instance.new("Folder")
@@ -6263,7 +6263,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local function floorNameTagPosition(pos)
         return Vector2.new(math.floor(pos.X), math.floor(pos.Y))
     end
@@ -6683,7 +6683,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local nobobdepth = {Value = 8}
     local nobobhorizontal = {Value = 8}
     local nobobvertical = {Value = -2}
@@ -6787,7 +6787,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local SongBeats = {Enabled = false}
     local SongBeatsList = {ObjectList = {}}
     local SongBeatsIntensity = {Value = 5}
@@ -6859,7 +6859,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local performed = false
     GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
         Name = "UICleanup",
@@ -6928,7 +6928,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local AntiAFK = {Enabled = false}
     AntiAFK = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
         Name = "AntiAFK",
@@ -6947,7 +6947,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local AutoBalloonPart
     local AutoBalloonConnection
     local AutoBalloonDelay = {Value = 10}
@@ -7047,7 +7047,7 @@ runFunction(function()
 end)
 
 local autobankapple = false
-runFunction(function()
+run(function()
     local AutoBuy = {Enabled = false}
     local AutoBuyArmor = {Enabled = false}
     local AutoBuySword = {Enabled = false}
@@ -7774,7 +7774,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local AutoConsume = {Enabled = false}
     local AutoConsumeHealth = {Value = 100}
     local AutoConsumeSpeed = {Enabled = true}
@@ -7848,7 +7848,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local AutoHotbarList = {Hotbars = {}, CurrentlySelected = 1}
     local AutoHotbarMode = {Value = "Toggle"}
     local AutoHotbarClear = {Enabled = false}
@@ -7999,7 +7999,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local AutoKit = {Enabled = false}
     local AutoKitTrinity = {Value = "Void"}
     local oldfish
@@ -8224,7 +8224,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local AutoForge = {Enabled = false}
     local AutoForgeWeapon = {Value = "Sword"}
     local AutoForgeBow = {Enabled = false}
@@ -8306,7 +8306,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local alreadyreportedlist = {}
     local AutoReportV2 = {Enabled = false}
     local AutoReportV2Notify = {Enabled = false}
@@ -8340,7 +8340,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local justsaid = ""
     local leavesaid = false
     local alreadyreported = {}
@@ -8607,7 +8607,7 @@ runFunction(function()
     AutoToxicPhrases8.Object.AddBoxBKG.AddBox.TextSize = 12
 end)
 
-runFunction(function()
+run(function()
     local ChestStealer = {Enabled = false}
     local ChestStealerDistance = {Value = 1}
     local ChestStealerDelay = {Value = 1}
@@ -8704,7 +8704,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local FastDrop = {Enabled = false}
     FastDrop = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
         Name = "FastDrop",
@@ -8724,7 +8724,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local MissileTP = {Enabled = false}
     local MissileTeleportDelaySlider = {Value = 30}
     MissileTP = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
@@ -8774,7 +8774,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local OpenEnderchest = {Enabled = false}
     OpenEnderchest = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
         Name = "OpenEnderchest",
@@ -8794,7 +8794,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local PickupRangeRange = {Value = 1}
     local PickupRange = {Enabled = false}
     PickupRange = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
@@ -8836,7 +8836,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local BowExploit = {Enabled = false}
     local BowExploitTarget = {Value = "Mouse"}
     local BowExploitAutoShootFOV = {Value = 1000}
@@ -8926,7 +8926,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local RavenTP = {Enabled = false}
     RavenTP = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
         Name = "RavenTP",
@@ -8972,7 +8972,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local tiered = {}
     local nexttier = {}
 
@@ -9015,7 +9015,7 @@ runFunction(function()
 end)
 
 local lagbackedaftertouch = false
-runFunction(function()
+run(function()
     local AntiVoidPart
     local AntiVoidConnection
     local AntiVoidMode = {Value = "Normal"}
@@ -9187,7 +9187,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local oldenable2
     local olddisable2
     local oldhitblock
@@ -9235,7 +9235,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local BedProtector = {Enabled = false}
     local bedprotector1stlayer = {
         Vector3.new(0, 3, 0),
@@ -9324,7 +9324,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local Nuker = {Enabled = false}
     local nukerrange = {Value = 1}
     local nukereffects = {Enabled = false}
@@ -9488,7 +9488,7 @@ runFunction(function()
 end)
 
 
-runFunction(function()
+run(function()
     local controlmodule = require(lplr.PlayerScripts.PlayerModule).controls
     local oldmove
     local SafeWalk = {Enabled = false}
@@ -9540,7 +9540,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local Schematica = {Enabled = false}
     local SchematicaBox = {Value = ""}
     local SchematicaTransparency = {Value = 30}
@@ -9783,7 +9783,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local Disabler = {Enabled = false}
     Disabler = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
         Name = "FirewallBypass",
@@ -9838,7 +9838,7 @@ end)
     ██║░╚═╝░██║╚█████╔╝██████╔╝╚██████╔╝███████╗███████╗░░╚██╔╝░╚██╔╝░██║░░██║██║░░██║███████╗
     ╚═╝░░░░░╚═╝░╚════╝░╚═════╝░░╚═════╝░╚══════╝╚══════╝░░░╚═╝░░░╚═╝░░╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝]]
 
-    runFunction(function()
+    run(function()
         CustomModule = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
             Name = "CustomHealthBar",
             Function = function(callback)
@@ -9886,7 +9886,7 @@ end)
     end)
 
     
---[[	runFunction(function() -- credits to _dremi on discord for finding the method (godpaster and the other skid skidded it from him)
+--[[	run(function() -- credits to _dremi on discord for finding the method (godpaster and the other skid skidded it from him)
         local SetEmote = {}
         local SetEmoteList = {Value = ''}
         local oldemote
@@ -9922,7 +9922,7 @@ end)
         })
     end)--]]
 
-    runFunction(function()
+    run(function()
         local Clipper = {Enabled = false}
         Clipper = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
             Name = "Clipper",
@@ -9935,7 +9935,7 @@ end)
         })
     end)
 
-    runFunction(function()
+    run(function()
         local AnticheatDamageBypass = {Enabled = false}
         local AnticheatDamageBypassY = {Value = false}
         local adbpart
@@ -9986,7 +9986,7 @@ end)
         })
     end)
     
-    runFunction(function()
+    run(function()
         local DesperateJump = {Enabled = false}
         local DesperateJumpY = {Value = false}
         local adbpart
@@ -10038,7 +10038,7 @@ end)
         })
     end)
 
-    runFunction(function()
+    run(function()
         local ConfettiExploit = {Enabled = false}
         local ConfettiExploitDelay = {Value = 0}
         ConfettiExploit = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
@@ -10062,7 +10062,7 @@ end)
         })
     end)
 
-    runFunction(function()
+    run(function()
         local AnticheatDisabler = {Enabled = false}
         AnticheatDisabler = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
             Name = "AnticheatDisabler",
@@ -10083,7 +10083,7 @@ end)
         })
     end)
 
-    runFunction(function()
+    run(function()
         local AutoWinSkywars = {Enabled = false}
         AutoWinSkywars = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
             Name = "AutoWinSkywars",
@@ -10103,7 +10103,7 @@ end)
         })
     end)
 
-    runFunction(function()
+    run(function()
         local AutoWinSkywarsV2 = {Enabled = false}
         AutoWinSkywarsV2 = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
             Name = "AutoWinSkywarsV2",
@@ -10125,7 +10125,7 @@ end)
         })
     end)
 
-    runFunction(function()
+    run(function()
         local BypassPlayerTP = {Enabled = false}
         BypassPlayerTP = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
             Name = "BypassPlayerTP",
@@ -10142,7 +10142,7 @@ end)
         })
     end)
 
-    runFunction(function()
+    run(function()
         local AutoChestSkywars = {Enabled = false}
         AutoChestSkywars = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
             Name = "AutoChestSkywars",
@@ -10163,7 +10163,7 @@ end)
         })
     end)
 
-    runFunction(function()
+    run(function()
         local TPAura = {Enabled = false}
         local TPAuraTarget = nil
         local yesConnection
@@ -10218,7 +10218,7 @@ end)
         })
     end)
 
-    runFunction(function()
+    run(function()
         local SetMechanic = {Enabled = false}
         local SetMechanicList = {Value = 'capture_points'}
     
@@ -10246,7 +10246,7 @@ end)
     end)
 
     
-runFunction(function()
+run(function()
 	local SetMechanic = {Enabled = false}
 	local SetMechanicList = {Value = 'capture_points'}
 
@@ -10273,7 +10273,7 @@ runFunction(function()
 	})
 end)
 
-    runFunction(function()
+    run(function()
         local AnimationDisabler = {Enabled = false}
         local AnimationDisablerAfter = {Value = 0}
         local AnimationDisablerConncetion
@@ -10303,7 +10303,7 @@ end)
         })
     end)
 
-    runFunction(function()
+    run(function()
         local DiscordLogger = {Enabled = false}
         local DiscordLoggerWebhook = {Value = ""}
         local chatconnections = {}
@@ -10417,7 +10417,7 @@ end)
         })
     end)
 
-    runFunction(function()
+    run(function()
         local hasTeleported = false
         local TweenService = game:GetService("TweenService")
     
@@ -10466,7 +10466,7 @@ end)
             ["HoverText"] = "Teleports you to the closest player that is not on your team (BETA)"
         })
     end)
-    runFunction(function()
+    run(function()
         local hasTeleported = false
         local TweenService = game:GetService("TweenService")
     
@@ -10542,7 +10542,7 @@ end)
             end
         })
     end)
-    runFunction(function()
+    run(function()
         local InfiniteJump = {Enabled = false}
         local IJConnection
         InfiniteJump = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
@@ -10559,7 +10559,7 @@ end)
         })
      
     end)
-    runFunction(function()
+    run(function()
         local FPSUnlocker = {Enabled = false}
         FPSUnlocker = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
             Name = "FPSUnlocker",
@@ -10573,7 +10573,7 @@ end)
         })
     end)
     local skidDetected = {}
-    runFunction(function()
+    run(function()
         SkidDetector = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
             Name = "SkidDetector",
             Function = function(callback)
@@ -10627,7 +10627,7 @@ end)
             wait()
         end
     end
-    runFunction(function()
+    run(function()
         EnchantedSwordEffect = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
             Name = "EnchantedSwordEffect",
             Function = function(callback)
@@ -10668,7 +10668,7 @@ end)
             end
         })
     end)
-    runFunction(function()
+    run(function()
         CustomKeystokes = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
             Name = "CustomKeystokes",
             Function = function(callback)
@@ -10961,7 +10961,7 @@ end)
         })
     end)
 
-    --[[runFunction(function() -- credits to _dremi on discord for finding the method (godpaster and the other skid skidded it from him)
+    --[[run(function() -- credits to _dremi on discord for finding the method (godpaster and the other skid skidded it from him)
         local SetEmote = {Enabled = false}
         local oldemote
         NightmareExploit = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
@@ -10980,7 +10980,7 @@ end)
         })
     end)--]]
 
-    runFunction(function()
+    run(function()
         local BoostAirJump = {Enabled = false}
         BoostAirJump = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
             Name = "BoostAirJump",
@@ -10997,7 +10997,7 @@ end)
         })
     end)
 
-    --[[runFunction(function()
+    --[[run(function()
         local ForceCustomMatchHost = {Enabled = false}
         ForceCustomMatchHost = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
             Name = "HostExploit",
@@ -11013,7 +11013,7 @@ end)
         })
     end)--]]
 
-    runFunction(function()
+    run(function()
         local SmoothAntivoid = {Enabled = false}
         local SmoothAntivoidColor = {hue = 284, sat = 100, val = 100}
         local SmoothAntivoidYPos = {Value = 15}
@@ -11074,7 +11074,7 @@ end)
         })
     end)
 
-    runFunction(function()
+    run(function()
         local RichShader = {Enabled = false}
         local shaderApplied
         RichShader = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
@@ -11325,7 +11325,7 @@ end)
         })
     end)
 
-    runFunction(function()
+    run(function()
         local transformed = false
         local TexturePacks = {["Enabled"] = false}
         local packselected = {["Value"] = "OldBedwars"}
@@ -11877,7 +11877,7 @@ end)
             "RandomPack"}
         })
     end)
-    runFunction(function()
+    run(function()
         local GameThemeV2 = {["Enabled"] = false}
         local themeselected = {["Value"] = "OldBedwars"}
     
@@ -12049,7 +12049,7 @@ end)
         })
     end)
 
-runFunction(function()
+run(function()
     bedwarsStore.TPString = shared.vapeoverlay or nil
     local origtpstring = bedwarsStore.TPString
     local Overlay = GuiLibrary.CreateCustomWindow({
@@ -12282,7 +12282,7 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
+run(function()
     local ReachDisplay = {}
     local ReachLabel
     ReachDisplay = GuiLibrary.CreateLegitModule({
